@@ -16,6 +16,7 @@
         android:text="Author:lilifeng" />
 
     <com.example.administrator.comtonview.Topbar
+        android:id="@+id/tipbar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         custom:leftBackground="@color/left_riht_color"

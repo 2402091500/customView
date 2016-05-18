@@ -6,6 +6,7 @@ import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.Gravity;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
@@ -16,7 +17,7 @@ import org.xml.sax.Attributes;
 /**
  * Created by Administrator on 2016/5/18.
  */
-public class Topbar extends RelativeLayout{
+public class Topbar extends RelativeLayout {
 
     private Button leftButton,rightButton;
     private TextView tvTitle;
@@ -33,7 +34,15 @@ public class Topbar extends RelativeLayout{
     private int titleTextColor;
     private  String titles;
 
+    private  topbarClickListener listener;
+    public interface  topbarClickListener{
+        public void leftClick();
+        public void rightClick();
+    }
 
+    public void setOnTopberClickListener(topbarClickListener listener){
+        this.listener=listener;
+    }
     private  LayoutParams leftParams,rightParams,titleParams;
 
     @SuppressLint("NewApi")
@@ -61,11 +70,24 @@ public class Topbar extends RelativeLayout{
         leftButton.setTextColor(leftTextColor);
         leftButton.setBackground(leftBackground);
         leftButton.setText(leftTxt);
+        leftButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.leftClick();
+            }
+        });
+
         
         rightButton.setTextColor(rightTextColor);
         rightButton.setBackground(rightBackground);
         rightButton.setText(rightTxt);
 
+        rightButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.rightClick();
+            }
+        });
         tvTitle.setTextColor(titleTextColor);
         tvTitle.setTextSize(titleTextSize);
         tvTitle.setText(titles);
@@ -88,5 +110,6 @@ public class Topbar extends RelativeLayout{
 
         addView(tvTitle,titleParams);
     }
+
 
 }
