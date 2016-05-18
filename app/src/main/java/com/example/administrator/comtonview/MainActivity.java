@@ -31,6 +31,6 @@ public class MainActivity extends Activity {
             }
         });
 
-
+       tipbar.left_right_visible(true,true);
     }
 }

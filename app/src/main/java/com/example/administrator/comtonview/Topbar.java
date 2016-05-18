@@ -111,5 +111,21 @@ public class Topbar extends RelativeLayout {
         addView(tvTitle,titleParams);
     }
 
+    public void left_right_visible(Boolean leftvisible,boolean rightvisible){
+
+       if(leftvisible==false){
+           leftButton.setVisibility(View.GONE);
+       }else{
+           leftButton.setVisibility(View.VISIBLE);
+       }
+       if(rightvisible==false){
+           rightButton.setVisibility(View.GONE);
+       }else{
+           rightButton.setVisibility(View.VISIBLE);
+       }
+        
+        
+    }
+
 
 }
